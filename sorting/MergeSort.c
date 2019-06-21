@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "alg_utils.h"
+#include "utils.h"
 
 #define LENGTH 9
 

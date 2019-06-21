@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "alg_utils.h"
+#include "utils.h"
 
 #define LENGTH 10
 

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "alg_utils.h"
+#include "utils.h"
 
 void bubble_sort(int *, int);
 

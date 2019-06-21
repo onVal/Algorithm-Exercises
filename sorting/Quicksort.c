@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "alg_utils.h"
+#include "utils.h"
 
 #define LENGTH 8
 
