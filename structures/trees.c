@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "llqueue.h"
+#include "llstack.h"
 
 typedef struct tree_t {
 	int value;
@@ -9,35 +10,45 @@ typedef struct tree_t {
 	struct tree_t *kid3;
 } tree_t;
 
+typedef enum TraverseStrategy {BFS, DFS} TraverseStrategy;
+
 tree_t *generate_sample_tree();
 tree_t *create_tree_node(int value);
 
-void print_tree_bfs(tree_t *root, void (*print_node)(void *));
+void traverse_tree(tree_t *root, void (*print_node)(void *), TraverseStrategy);
 void print_node(void *node);
 
 int main() {
 	void (*print_n)(void *) = &print_node;
 	tree_t* albero = generate_sample_tree(&albero);
-	print_tree_bfs(albero, print_n);
+	traverse_tree(albero, print_n, BFS);
+	traverse_tree(albero, print_n, DFS);
+
 	return 0;
 }
 
-void print_tree_bfs(tree_t *root, void (*print_node)(void *)) {
-	linked_list *queue = NULL;
+void traverse_tree(tree_t *root, void (*print_node)(void *), TraverseStrategy strat) {
+	linked_list *list = NULL;
 	int empty_queue = 0;
-	enqueue(&queue, root);
+
+	void (*add)(linked_list **, void *) = (strat == BFS) ? &enqueue : &push;
+	void *(*remove)(linked_list **) = (strat == BFS) ? &dequeue : &pop;
+
+	add(&list, root);
 
 	tree_t *current;
 	printf("Tree: ");
 	
-	while((current = dequeue(&queue)) != NULL) {
+	while((current = remove(&list)) != NULL) {
 		printf("-> %d ", current->value);
 		// (*print_node)(current);
 		
-		if (current->kid1 != NULL) enqueue(&queue, current->kid1);
-		if (current->kid2 != NULL) enqueue(&queue, current->kid2);
-		if (current->kid3 != NULL) enqueue(&queue, current->kid3);
+		if (current->kid1 != NULL) add(&list, current->kid1);
+		if (current->kid2 != NULL) add(&list, current->kid2);
+		if (current->kid3 != NULL) add(&list, current->kid3);
 	}
+
+	printf("\n");
 }
 
 tree_t *create_tree_node(int value) {
