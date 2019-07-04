@@ -2,29 +2,31 @@
 #include "llstack.h"
 #include <stdio.h>
 
+void print_c(void *num);
+
 int main () {
 	linked_list *root;
 	root = NULL;
 
 	int i;
 	for (i = 0; i < 10; i++) {
-		push(&root, i*5);
+		push(&root, 'A'+i);
 	}
 
-	print_ll(root);
+	print_ll(root, &print_c);
 
-	int e = 0;
 	int popped;
 
-	while (e != -1) {
-		popped = pop(&root, &e);
-		if (e != -1)
-			printf("%d popped!\n", popped);
+	while ((popped = pop(&root)) != NULL) {
+			print_c(popped);
+			printf(" popped!\n");
 	}
+	printf("Finished popping!\n");
 
-	if (e == -1)
-		printf("Finished popping!\n");
-
-	print_ll(root);
+	print_ll(root, &print_c);
 	return 0;
+}
+
+void print_c(void *num) {
+	printf("%c", num);
 }

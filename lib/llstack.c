@@ -2,7 +2,7 @@
 #include "llstack.h"
 
 //insert value on stack
-void push(linked_list **root, int x) {
+void push(linked_list **root, void *x) {
 	if (*root == NULL) {
 		*root = malloc(sizeof(linked_list));
 		(*root)->x = x;
@@ -21,14 +21,12 @@ void push(linked_list **root, int x) {
 	current->next->next = NULL;
 }
 
-//return popped value
-//returns and sets err = -1 if can't pop
-int pop(linked_list **root, int *err) {
-	int value;
+//return popped value or NULL if can't pop
+void *pop(linked_list **root) {
+	void *value;
 
 	if (*root == NULL) {
-		*err = -1;
-		return -1;
+		return NULL;
 	}
 
 	if ((*root)->next == NULL) {

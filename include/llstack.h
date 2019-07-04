@@ -4,8 +4,8 @@
 #include "linked_list.h"
 
 //insert value on stack
-void push(linked_list **root, int x);
+void push(linked_list **root, void *x);
 
 //returns popped value
 //sets err to -1 if stack is empty
-int pop(linked_list **root, int *err);
+void *pop(linked_list **root);
