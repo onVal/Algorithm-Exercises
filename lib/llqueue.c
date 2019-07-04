@@ -26,7 +26,7 @@ void *dequeue(linked_list **q, int *err) {
 
     if (*q == NULL) {
         *err = -1;
-        return -1;
+        return NULL;
     } else {
         temp = *q;
         value = temp->x;
