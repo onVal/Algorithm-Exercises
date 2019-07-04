@@ -1,5 +1,6 @@
 //integer stack
 //stack implementation with a linked list
+#pragma once
 #include "linked_list.h"
 
 //insert value on stack

@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include "llstack.h"
-#include "linked_list.h"
 
 //insert value on stack
 void push(linked_list **root, int x) {

@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "llqueue.h"
 
-void push(linked_list **q, int val) {
+void enqueue(linked_list **q, void *val) {
     if (*q == NULL) {
         *q = malloc(sizeof(struct linked_list));
         (*q)->x = val;
@@ -20,9 +20,9 @@ void push(linked_list **q, int val) {
     current->next->next = NULL;
 }
 
-int pop(linked_list **q, int *err) {
+void *dequeue(linked_list **q, int *err) {
     linked_list *temp;
-    int value;
+    void *value;
 
     if (*q == NULL) {
         *err = -1;
