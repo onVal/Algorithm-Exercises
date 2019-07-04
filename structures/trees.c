@@ -28,20 +28,15 @@ void print_tree_bfs(tree_t *root, void (*print_node)(void *)) {
 	enqueue(&queue, root);
 
 	tree_t *current;
-	// printf("Tree: ");
+	printf("Tree: ");
 	
-	while(empty_queue != -1) {
-		current = dequeue(&queue, &empty_queue);
-		// print_ll(queue, print_node);
-
-		if (empty_queue != -1) {
-			printf("-> %d ", current->value);
+	while((current = dequeue(&queue)) != NULL) {
+		printf("-> %d ", current->value);
 		// (*print_node)(current);
 		
-			if (current->kid1 != NULL) enqueue(&queue, current->kid1);
-			if (current->kid2 != NULL) enqueue(&queue, current->kid2);
-			if (current->kid3 != NULL) enqueue(&queue, current->kid3);
-		}
+		if (current->kid1 != NULL) enqueue(&queue, current->kid1);
+		if (current->kid2 != NULL) enqueue(&queue, current->kid2);
+		if (current->kid3 != NULL) enqueue(&queue, current->kid3);
 	}
 }
 

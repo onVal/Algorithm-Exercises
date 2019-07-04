@@ -20,20 +20,16 @@ void enqueue(linked_list **q, void *val) {
     current->next->next = NULL;
 }
 
-void *dequeue(linked_list **q, int *err) {
+void *dequeue(linked_list **q) {
     linked_list *temp;
     void *value;
 
-    if (*q == NULL) {
-        *err = -1;
+    if (*q == NULL)
         return NULL;
-    } else {
-        temp = *q;
-        value = temp->x;
-        (*q) = (*q)->next;
-        free(temp);
-        *err = 0;
-        return value;
-    }
 
+    temp = *q;
+    value = temp->x;
+    (*q) = (*q)->next;
+    free(temp);
+    return value;
 }

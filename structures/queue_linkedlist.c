@@ -34,18 +34,12 @@ int main () {
 
 	print_ll(root, print_n);
 
-	int e = 0;
-
-	while (e != -1) {
-		popped = dequeue(&root, &e);
-		if (e != -1) {
-			(*print_n)(popped);
-			printf(" popped!\n");
-		}
+	while ((popped = dequeue(&root)) != NULL) {
+		(*print_n)(popped);
+		printf(" popped!\n");
 	}
 
-	if (e == -1)
-		printf("Finished popping!\n");
+	printf("Finished popping!\n");
 
 	print_ll(root, print_n);
 	return 0;
