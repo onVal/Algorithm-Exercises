@@ -1,6 +1,6 @@
 all: out/trees
 
-out/trees: structures/trees.c lib/out/llqueue.o lib/out/llstack.o lib/out/linked_list.o
+out/trees: structures/trees.c lib/out/binary_tree.o lib/out/llqueue.o lib/out/llstack.o lib/out/linked_list.o
 	mkdir -p out/
 	gcc $^ -I include/ -o $@ -g
 
