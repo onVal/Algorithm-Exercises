@@ -51,6 +51,30 @@ void traverse_tree(bin_node_t *root, void (*print_node)(void *), TraverseStrateg
 
 	printf("\n");
 }
+
+void dfs_recursive(bin_node_t *tree, DFS_Strategy strat) {
+    if (tree == NULL) return;
+
+    switch (strat) {
+        case PREFIX:    
+            printf("-> %d ", tree->value);
+            if (tree->left != NULL) dfs_recursive(tree->left, strat);
+            if (tree->right != NULL) dfs_recursive(tree->right, strat);
+            break;
+        case POSTFIX:
+            if (tree->left != NULL) dfs_recursive(tree->left, strat);
+            if (tree->right != NULL) dfs_recursive(tree->right, strat);
+            printf("-> %d ", tree->value);
+            break;
+        case SIMMETRIC:
+            if (tree->left != NULL) dfs_recursive(tree->left, strat);
+            printf("-> %d ", tree->value);
+            if (tree->right != NULL) dfs_recursive(tree->right, strat);
+            break;
+        default:
+            fprintf(stderr, "Invalid DFS Strategy\n");
+    }
+}
 void print_node(void *node) {
     if (((bin_node_t *)node) != NULL) {
 		printf("-> %d ", ((bin_node_t*)node)->value);
