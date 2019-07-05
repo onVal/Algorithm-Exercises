@@ -40,8 +40,7 @@ void traverse_tree(tree_t *root, void (*print_node)(void *), TraverseStrategy st
 	printf("Tree: ");
 	
 	while((current = remove(&list)) != NULL) {
-		printf("-> %d ", current->value);
-		// (*print_node)(current);
+		(*print_node)(current);
 		
 		if (current->kid1 != NULL) add(&list, current->kid1);
 		if (current->kid2 != NULL) add(&list, current->kid2);
@@ -78,6 +77,6 @@ tree_t *generate_sample_tree() {
 
 void print_node(void *node) {
 	if (((tree_t *)node) != NULL) {
-		printf("%d", ((tree_t*)node)->value);
+		printf("-> %d ", ((tree_t*)node)->value);
 	}
 }
