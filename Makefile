@@ -1,4 +1,8 @@
-all: out/trees
+all: out/shunting_yard
+
+out/shunting_yard: other/shunting_yard.c lib/out/llqueue.o lib/out/llstack.o lib/out/linked_list.o
+	mkdir -p out/
+	gcc $^ -I include/ -o $@ -g
 
 out/trees: structures/trees.c lib/out/binary_tree.o lib/out/llqueue.o lib/out/llstack.o lib/out/linked_list.o
 	mkdir -p out/
