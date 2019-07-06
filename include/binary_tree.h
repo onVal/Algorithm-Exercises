@@ -15,3 +15,5 @@ void traverse_tree(bin_node_t *root, void (*)(void *), TraverseStrategy);
 void dfs_recursive(bin_node_t *tree, DFS_Strategy);
 void print_node(void *node);
 int num_nodes(bin_node_t *tree);
+
+void ins_binsearch_tree(bin_node_t **root, int value);

@@ -89,3 +89,32 @@ int num_nodes(bin_node_t *tree) {
     int n2 = num_nodes(tree->right);
     return n1 + n2 + 1;
 }
+
+void ins_binsearch_tree(bin_node_t **root, int value) {
+    if (*root == NULL) {
+        *root = create_tree_node(value);
+        return;
+    }
+
+    bin_node_t *current = *root;
+
+    while (current != NULL) {
+        if (value == current->value) return; //doesn't allow duplicate items
+
+        if (value > current->value) {
+            if (current->right != NULL)
+                current = current->right;
+            else {
+                current->right = create_tree_node(value);
+                return;
+            }
+        } else {
+            if (current->left != NULL)
+                current = current->left;
+            else {
+                current->left = create_tree_node(value);
+                return;
+            }
+        }
+    }
+}
