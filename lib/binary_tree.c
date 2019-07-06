@@ -76,7 +76,16 @@ void dfs_recursive(bin_node_t *tree, DFS_Strategy strat) {
     }
 }
 void print_node(void *node) {
-    if (((bin_node_t *)node) != NULL) {
+    if (node != NULL) {
 		printf("-> %d ", ((bin_node_t*)node)->value);
 	}
+}
+
+int num_nodes(bin_node_t *tree) {
+    if (tree == NULL)
+        return 0;
+    
+    int n1 = num_nodes(tree->left);
+    int n2 = num_nodes(tree->right);
+    return n1 + n2 + 1;
 }

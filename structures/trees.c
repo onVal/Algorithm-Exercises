@@ -20,5 +20,6 @@ int main() {
 	dfs_recursive(albero, SIMMETRIC);
 	printf("\n");
 
+	printf("This tree has %d nodes\n", num_nodes(albero));
 	return 0;
 }
