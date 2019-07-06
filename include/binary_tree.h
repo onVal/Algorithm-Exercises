@@ -16,7 +16,9 @@ void dfs_recursive(bin_node_t *tree, DFS_Strategy);
 void print_node(void *node);
 int num_nodes(bin_node_t *tree);
 
-void ins_binsearch_tree(bin_node_t **root, int value);
+void ins_bsearch_tree(bin_node_t **root, int value);
+bin_node_t *find_node_bsearch_tree(bin_node_t *node, int value);
+// void del_bsearch_tree(bin_node_t **root, int value);
 
 //return -1 if it's empty
-int max_binsearch_tree(bin_node_t *root);
+int max_bsearch_tree(bin_node_t *root);

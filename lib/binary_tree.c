@@ -90,7 +90,7 @@ int num_nodes(bin_node_t *tree) {
     return n1 + n2 + 1;
 }
 
-void ins_binsearch_tree(bin_node_t **root, int value) {
+void ins_bsearch_tree(bin_node_t **root, int value) {
     if (*root == NULL) {
         *root = create_tree_node(value);
         return;
@@ -119,7 +119,23 @@ void ins_binsearch_tree(bin_node_t **root, int value) {
     }
 }
 
-int max_binsearch_tree(bin_node_t *tree) {
+bin_node_t *find_node_bsearch_tree(bin_node_t *node, int value) {
+    if (node == NULL) return NULL;
+
+    if (value == node->value)
+        return node;
+    
+    return 
+        find_node_bsearch_tree((value > node->value) ? node->right : node->left, value);
+}
+
+// void del_bsearch_tree(bin_node_t **root, int value) {
+
+
+
+// }
+
+int max_bsearch_tree(bin_node_t *tree) {
     if (tree == NULL) return -1;
 
     while (tree->right != NULL)
