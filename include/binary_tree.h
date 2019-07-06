@@ -17,3 +17,6 @@ void print_node(void *node);
 int num_nodes(bin_node_t *tree);
 
 void ins_binsearch_tree(bin_node_t **root, int value);
+
+//return -1 if it's empty
+int max_binsearch_tree(bin_node_t *root);

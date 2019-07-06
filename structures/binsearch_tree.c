@@ -9,5 +9,6 @@ int main() {
         ins_binsearch_tree(&bst, elements[i]);
 
     dfs_recursive(bst, SIMMETRIC);
+    printf("\nThe largest value in this tree is: %d\n", max_binsearch_tree(bst));
     return 0;
 }

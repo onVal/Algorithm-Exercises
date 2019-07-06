@@ -118,3 +118,12 @@ void ins_binsearch_tree(bin_node_t **root, int value) {
         }
     }
 }
+
+int max_binsearch_tree(bin_node_t *tree) {
+    if (tree == NULL) return -1;
+
+    while (tree->right != NULL)
+        tree = tree->right;
+    
+    return tree->value;
+}
