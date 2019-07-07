@@ -129,12 +129,76 @@ bin_node_t *find_node_bsearch_tree(bin_node_t *node, int value) {
         find_node_bsearch_tree((value > node->value) ? node->right : node->left, value);
 }
 
-// void del_bsearch_tree(bin_node_t **root, int value) {
+//return -1 if item doesn't exist, 0 otherwise
+int del_bsearch_tree(bin_node_t **root, int value) {
+    // find node to delete and it's parent
+    bin_node_t *parent = NULL;
+    bin_node_t *node = *root;
 
+    while (node != NULL) {
+        if (value == node->value) break;
+        parent = node;
+        node = (value > node->value) ? node->right : node->left;
+    }
+    if (node == NULL) return -1;
 
+    if (node->left == NULL && node->right == NULL) {
+        if (parent != NULL) {
+            if (parent->value < node->value)
+                parent->right = NULL;
+            else
+                parent->left = NULL;
+        } else {
+            *root = NULL;
+        }
+        free(node);
+    } else if (node->left == NULL && node->right != NULL) {
+        if (parent != NULL) {
+            if (parent->value < node->value)
+                parent->right = node->right;
+            else
+                parent->left = node->right;
+        } else {
+            *root = node->right;
+        }
+        
+        free(node);
+    } else if (node->left != NULL && node->right == NULL) {
+        if (parent != NULL) {
+        if (parent->value < node->value)
+            parent->right = node->left;
+        else
+            parent->left = node->left;
+        } else {
+            *root = node->left;
+        }
+        free(node);
+    } else if (node->left != NULL && node->right != NULL) {
+        bin_node_t *parent = node;
+        bin_node_t *substitute = node->left;
+        while(substitute->right != NULL) {
+            parent = substitute;
+            substitute = substitute->right;
+        }
+        
+        node->value = substitute->value;
 
-// }
+        if (substitute->left != NULL)
+            parent->right = substitute->left;
+        
+        if (parent != node)
+            parent->right = NULL;
 
+        if (parent == node)
+            parent->left = NULL;
+
+        free(substitute);
+    }
+    
+    return 0;
+}
+
+//return -1 if it's empty
 int max_bsearch_tree(bin_node_t *tree) {
     if (tree == NULL) return -1;
 
