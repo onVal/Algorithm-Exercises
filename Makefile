@@ -1,4 +1,8 @@
-all: out/binsearch_tree
+all: out/avl_tree
+
+out/avl_tree: structures/avl_tree.c lib/out/binary_tree.o lib/out/llqueue.o lib/out/llstack.o lib/out/linked_list.o
+	mkdir -p out/
+	gcc $^ -I include/ -o $@ -g
 
 out/binsearch_tree: structures/binsearch_tree.c lib/out/binary_tree.o lib/out/llqueue.o lib/out/llstack.o lib/out/linked_list.o
 	mkdir -p out/

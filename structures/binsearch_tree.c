@@ -21,18 +21,11 @@ int main() {
     
     rm_helper(&bst, 15);
     rm_helper(&bst, 30);
-    rm_helper(&bst, 2);
-    rm_helper(&bst, 21);
-    rm_helper(&bst, 16);
-    rm_helper(&bst, 29);
-    rm_helper(&bst, 28);
-    rm_helper(&bst, 7);
-    rm_helper(&bst, 3);
-    rm_helper(&bst, 15);
+    
     rm_helper(&bst, 12);
 
     find_in_tree(bst, 7);
-    
+
     return 0;
 }
 
