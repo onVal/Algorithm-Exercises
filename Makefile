@@ -1,4 +1,4 @@
-all: out/2_3_tree
+all: out/integersort
 
 out/2_3_tree: structures/try_2_3_tree.c lib/out/2_3_tree.o
 	mkdir -p out/
@@ -20,7 +20,11 @@ out/trees: structures/trees.c lib/out/binary_tree.o lib/out/llqueue.o lib/out/ll
 	mkdir -p out/
 	gcc $^ -I include/ -o $@ -g
 
-out/bubblesort: sorting/bubblesort.c lib/out/utils.o
+out/integersort: sorting/integer_sorting_alg.c lib/out/utils.o lib/out/sorting.o
+	mkdir -p out/
+	gcc $^ -I include/ -o $@ -g
+
+out/trysorting: sorting/trysorting.c lib/out/utils.o lib/out/sorting.o
 	mkdir -p out/
 	gcc $^ -I include/ -o $@ -g
 

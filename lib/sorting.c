@@ -104,3 +104,25 @@ void merge(int *array, int start, int m, int end) {
 	memcpy (array+start, temp, length*sizeof(int));
 	free(temp);
 }
+
+void integer_sort(int *array, int len) {
+    int *bucket = calloc(len, sizeof(*array));
+
+    for (int i = 0; i < len; i++) {
+        bucket[array[i]-1]++;
+    }
+
+    int i = 0, j = 0;
+    
+    while (i < len) {
+        if (bucket[j] > 0) {
+            array[i] = j+1;
+            bucket[j]--;
+            i++;
+        } else {
+            j++;
+        }
+    }
+    
+    free(bucket);
+}

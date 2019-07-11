@@ -8,10 +8,8 @@ void swap(int *a, int *b) {
 }
 
 void print_array(int *array, int len) {
-    printf("Array: ");
-
     if (len == 0) {
-        printf("is empty\n");
+        printf("<Empty>\n");
         return;
     }
 
