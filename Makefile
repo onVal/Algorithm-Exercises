@@ -1,9 +1,12 @@
-all: out/scritto_12luglio
+all: out/ladder_snake
+
+out/ladder_snake: other/ladder_snake_impl.c
+	mkdir -p out/
+	gcc $^ -I include/ -o $@ -g
 
 out/scritto_12luglio: other/scritto_12luglio.c lib/out/utils.o
 	mkdir -p out/
 	gcc $^ -I include/ -o $@ -g
-
 
 out/2_3_tree: structures/try_2_3_tree.c lib/out/2_3_tree.o
 	mkdir -p out/
