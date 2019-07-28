@@ -1,4 +1,9 @@
-all: out/integersort
+all: out/scritto_12luglio
+
+out/scritto_12luglio: other/scritto_12luglio.c lib/out/utils.o
+	mkdir -p out/
+	gcc $^ -I include/ -o $@ -g
+
 
 out/2_3_tree: structures/try_2_3_tree.c lib/out/2_3_tree.o
 	mkdir -p out/
