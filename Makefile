@@ -1,4 +1,8 @@
-all: out/ladder_snake
+all: out/try_heap
+
+out/try_heap: structures/try_heap.c lib/out/heap.o lib/out/utils.o
+	mkdir -p out/ 
+	gcc $^ -I include/ -o $@ -g
 
 out/ladder_snake: other/ladder_snake_impl.c
 	mkdir -p out/
