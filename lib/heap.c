@@ -9,7 +9,7 @@
 Heap *create_empty_heap() {
     Heap *heap = malloc(sizeof(Heap *));
 
-    heap->heap_array = malloc(DEFAULT_HEAP_SIZE * sizeof(int));
+    heap->array = malloc(DEFAULT_HEAP_SIZE * sizeof(int));
     heap->last_value = -1;
     heap->length = DEFAULT_HEAP_SIZE;
 
@@ -21,24 +21,23 @@ void insert_heap_elem(Heap *heap, int value) {
         heap = create_empty_heap();
     
     if (heap->last_value == heap->length) {
-        heap->heap_array = realloc(heap->heap_array, heap->length * 2);
+        heap->array = realloc(heap->array, heap->length * 2);
         heap->length *= 2;
     }
 
     heap->last_value++;
-    heap->heap_array[heap->last_value] = value;
+    heap->array[heap->last_value] = value;
 
     // reposition element to maintain heap property
-    int cur_value = heap->last_value;
-    int parent_value;
+    int cur_index = heap->last_value;
+    int parent_index;
 
-    while(cur_value != 0) {
-        parent_value = (int)ceil((cur_value - 2) / 2.0);
-        printf("cur_value index = %d\tparent index = %d\n", cur_value, parent_value);
+    while(cur_index != 0) {
+        parent_index = (int)ceil((cur_index - 2) / 2.0);
 
-        if (heap->heap_array[cur_value] > heap->heap_array[parent_value]) {
-            swap(&(heap->heap_array[cur_value]), &(heap->heap_array[parent_value]));
-            cur_value = parent_value;
+        if (heap->array[cur_index] > heap->array[parent_index]) {
+            swap(&(heap->array[cur_index]), &(heap->array[parent_index]));
+            cur_index = parent_index;
         } else
             break;
     }

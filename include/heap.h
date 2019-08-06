@@ -1,7 +1,7 @@
 #pragma once
 
 typedef struct heap_t {
-    int *heap_array;
+    int *array;
     int last_value;
     int length;
 } Heap;
