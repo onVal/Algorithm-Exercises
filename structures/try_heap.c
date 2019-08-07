@@ -11,51 +11,10 @@ int main () {
     }
     print_array(heap->array, heap->last_value+1);
 
-    int x = pop_from_heap(heap);
-    printf("item popped: %d\n", x);
-    print_array(heap->array, heap->last_value+1);
-
-    x = pop_from_heap(heap);
-    printf("item popped: %d\n", x);
-    print_array(heap->array, heap->last_value+1);
-
-    x = pop_from_heap(heap);
-    printf("item popped: %d\n", x);
-    print_array(heap->array, heap->last_value+1);
-
-    x = pop_from_heap(heap);
-
-     printf("item popped: %d\n", x);
-    print_array(heap->array, heap->last_value+1);
-
-
-    x = pop_from_heap(heap);
-     printf("item popped: %d\n", x);
-    print_array(heap->array, heap->last_value+1);
-
-    x = pop_from_heap(heap);
-     printf("item popped: %d\n", x);
-    print_array(heap->array, heap->last_value+1);
-
-    x = pop_from_heap(heap);
-     printf("item popped: %d\n", x);
-    print_array(heap->array, heap->last_value+1);
-
-    x = pop_from_heap(heap);
-     printf("item popped: %d\n", x);
-    print_array(heap->array, heap->last_value+1);
-
-    x = pop_from_heap(heap);
-     printf("item popped: %d\n", x);
-    print_array(heap->array, heap->last_value+1);
-
-    x = pop_from_heap(heap);
-     printf("item popped: %d\n", x);
-    print_array(heap->array, heap->last_value+1);
-
-    x = pop_from_heap(heap);
-     printf("item popped: %d\n", x);
-    print_array(heap->array, heap->last_value+1);
+    while(heap->last_value != -1) {
+        printf("item popped: %d\n", pop_from_heap(heap));
+        print_array(heap->array, heap->last_value+1);
+    }
 
     return 0;
 }
