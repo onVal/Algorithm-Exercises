@@ -1,4 +1,4 @@
-all: out/try_heap
+all: out/ladder_snake
 
 out/try_heap: structures/try_heap.c lib/out/heap.o lib/out/utils.o
 	mkdir -p out/ 
@@ -7,6 +7,10 @@ out/try_heap: structures/try_heap.c lib/out/heap.o lib/out/utils.o
 out/ladder_snake: other/ladder_snake_impl.c
 	mkdir -p out/
 	gcc $^ -I include/ -o $@ -g
+
+.PHONY: ladder_snake_exe
+ladder_snake_exe:
+	./out/ladder_snake < ./input_files/ladder_snake_input
 
 out/scritto_12luglio: other/scritto_12luglio.c lib/out/utils.o
 	mkdir -p out/
@@ -55,6 +59,7 @@ out/stack_linkedlist: structures/stack_linkedlist.c lib/out/utils.o lib/out/llst
 lib/out/%.o: lib/%.c
 	mkdir -p lib/out
 	gcc -c $< -I include/ -o $@ -g
+
 
 .PHONY: clean
 clean:
