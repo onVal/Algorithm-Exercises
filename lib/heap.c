@@ -5,6 +5,7 @@
 #include <stdio.h>
 
 #define DEFAULT_HEAP_SIZE 10
+#define MAX(a,b) ((a > b) ? a : b)
 
 Heap *create_empty_heap() {
     Heap *heap = malloc(sizeof(Heap *));
@@ -43,6 +44,33 @@ void insert_heap_elem(Heap *heap, int value) {
     }
 }
 
-int delete_heap_elem(Heap *heap) {
-    return 0;
+//returns -1 if heap is empty
+int pop_from_heap(Heap *heap) {
+    if (heap->last_value == -1) return -1;
+
+    int top_value = heap->array[0];
+    heap->array[0] = heap->array[heap->last_value];
+    heap->last_value--;
+
+    int index, left_child, right_child, next_index;
+    index = 0;
+    left_child = index * 2 + 1;
+    right_child = index * 2 + 2;
+
+    while (heap->last_value >= left_child) {
+        if (heap->last_value >= right_child)
+            next_index = (heap->array[left_child] >= heap->array[right_child]) ? left_child : right_child;
+        else
+            next_index = left_child;
+        
+        if (heap->array[index] < heap->array[next_index]) {
+            swap(&heap->array[index], &heap->array[next_index]);
+            index = next_index;
+            left_child = index * 2 + 1;
+            right_child = index * 2 + 2;
+        } else
+            break;
+    } 
+
+    return top_value;
 }

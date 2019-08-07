@@ -9,4 +9,4 @@ typedef struct heap_t {
 //max heap implementation
 Heap *create_empty_heap();
 void insert_heap_elem(Heap *heap, int value);
-int delete_heap_elem(Heap *heap);
+int pop_from_heap(Heap *heap);
