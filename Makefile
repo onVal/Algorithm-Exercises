@@ -1,5 +1,9 @@
 all: out/ladder_snake
 
+out/try_dict: structures/try_dict.c lib/out/dictionary.o
+	mkdir -p out/
+	gcc $^ -I include/ -o $@ -g
+
 out/try_heap: structures/try_heap.c lib/out/heap.o lib/out/utils.o
 	mkdir -p out/ 
 	gcc $^ -I include/ -o $@ -g
