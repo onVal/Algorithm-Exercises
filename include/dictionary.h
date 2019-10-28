@@ -24,11 +24,11 @@ void set_keyvalue(dict_t *dict, int idx, char *key, char *value);
 void insert(dict_t *dict, char *key, char *value);
 
 //returns NULL if value is not present
-char *getValue(dict_t dict, char *key);
+char *getValue(dict_t *dict, char *key);
 
 unsigned long hash(char *key);
 int c_hash(char *key, int i, int size);
 
-void printValues(dict_t dict);
-void printAll(dict_t dict);
+void printValues(dict_t *dict);
+void printAll(dict_t *dict);
 

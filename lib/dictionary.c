@@ -2,6 +2,7 @@
 #include "dictionary.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 #define STRING_SIZE 20
 
@@ -94,4 +95,49 @@ void insert(dict_t *dict, char *key, char *value) {
         realloc(dict->entries, dict->size * sizeof(pair_t));
 
     insert(dict, key, value);
+}
+
+char *getValue(dict_t *dict, char *key) {
+    int probing_offset = 0;
+    int idx = c_hash(key, probing_offset, dict->size);
+    int initial_idx = idx;
+
+    char *keyAtIndex;
+
+    do {
+        if ((keyAtIndex = get_key(dict, idx)) == NULL) {
+            return NULL;
+        } else if (strcmp(keyAtIndex, key) == 0) {
+            return get_value(dict, idx);
+        } else {
+            ++probing_offset;
+            idx = c_hash(key, probing_offset, dict->size);
+        }
+    } while(idx != initial_idx);
+
+    return NULL;
+}
+
+void printValues(dict_t *dict) {
+    char *current;
+
+    printf("[ ");
+    for (int i=0; i < dict->size; i++)
+        if ((current = get_value(dict, i)) != NULL)
+            printf("%s, ", current);
+    
+    printf(" ]\n");
+}
+
+void printAll(dict_t *dict) {
+    char *current_key;
+
+    printf("{ ");
+    for (int i=0; i < dict->size; i++) {
+        if ((current_key = get_key(dict, i)) != NULL) {
+            printf("(%s, %s), ", current_key, get_value(dict, i));
+        }
+    }
+
+    printf(" }\n");
 }
