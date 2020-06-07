@@ -2,7 +2,7 @@ all: out/try_union_find
 
 out/try_union_find: structures/try_union_find.c lib/out/union_find.o lib/out/dictionary.o
 	mkdir -p out/
-	gcc $^ -I include/ -o $@ -g
+	gcc $^ -I include/ -o $@ -g -Wall -pedantic
 
 out/try_dict: structures/try_dict.c lib/out/dictionary.o
 	mkdir -p out/
