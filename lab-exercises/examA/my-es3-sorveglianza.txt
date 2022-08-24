@@ -1,0 +1,66 @@
+1) Questa struttura si puo' modellare con un albero.
+
+nodo {
+	int sNumber
+	int value
+	nodo *father
+	nodo *kids[]
+}
+
+-----
+
+La stanza d'ingresso e' la radice, le varie stanze sono i nodi
+i corridoi sono gli archi.
+Un impianto e' un set di nodi dell'albero che soddisfa una condizione precisa. (???)
+
+
+2) PROGETTARE E DESCRIVERE UN ALGO CHE DATO UN DEPOSITO E UN INSIEME DI STANZE, DICE SE E' UN IMPIANTO O NO.
+isImplant(*rootNode, {s0, s2, s3})
+
+// non e' un impianto se c'e' anche un solo nodo non coperto
+traversing nodes with BFS {
+	if nodo non e' nel set e il padre non e' marcato:
+		return NO
+}
+
+return SI
+-------------------------------
+
+isImplant(D, stanze)
+// 
+for each stanz in D: // O(n.stanze)
+	if (x.sNumber == una delle stanze in s) // questo e' O(n.stanze)
+	// per marcare basta avere un array binario di n.stanze elementi
+	marca la stanza s
+	marca il padre della stanza s
+	marca i figli della stanza s
+
+se tutte le stanze sono marcate
+	return true
+else
+	return false
+
+O(stanze^2)
+// is there a better algorithm than a quadratic one?
+
+certo, usa una lista adiacenza per rappresentare l'albero!
+
+---------------------------------------------------------------
+
+
+3) PROGETTARE E DEFINIRE UN ALGO CHE DETERMINA DOVE POSIZIONARE LE TELECAMERE. E' OTTIMALE? SPIEGARE SE SI O NO.
+
+uso programmazione dinamica.
+per ogni elemento devo decidere se mettere una camera o meno.
+
+prendi il max dei nodi fra quelli non marcati:
+	mark it and mark all adjacent nodes
+
+sum marked nodes values
+
+
+
+4. PROGETTARE E DEFINIRE UN ALGO CHE DETERMINA DOVE POSIZIONARE LE TELECAMERE DI UN IMPIANTO OTTIMALE.
+
+
+

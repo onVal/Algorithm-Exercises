@@ -1,0 +1,36 @@
+Questo problema si puo' modellare con un grafo.
+Le stanze rappresentano i nodi del grafo e i corridoi i vertici
+
+Posso usare come struttura dati un albero.
+La radice rappresenta la stanza di partenza, i nodi sono le stanze,
+i corridoi sono i vertici e gli impianti sono rappresentati dal valore del nodo.
+
+I nodi possono avere un numero variabile di figli (0..N), quindi posso implementare questa struttura
+con un array di puntatori ai nodi figli (is there a better way?)
+
+struct stanza {
+	char *name;
+	int impianti;
+	struct stanza *children;
+}
+
+(how to name stanze?) [check out rappresentazione alberi]
+
+siccome ho un nodo di partenza, posso usare un albero...(?)
+
+
+2.
+
+isOptimal (rootNode, stanze[]) {
+	// boh really hard bro
+	
+}
+
+3. // sono scarso
+
+
+4. // derp
+
+
+
+4.) note
